@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "Posts"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "media": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "user": {
+      "via": "posts",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "comments": {
+      "via": "post",
+      "collection": "comment"
+    }
+  }
+}
